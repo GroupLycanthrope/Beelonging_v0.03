@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - BeeBullet
   - HoneyCombPickUp
+  - LowPrioPlayer
   layers:
   - Default
   - TransparentFX

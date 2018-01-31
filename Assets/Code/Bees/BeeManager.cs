@@ -6,23 +6,23 @@ public class BeeManager : MonoBehaviour {
 
     public GameObject m_xPlayer;
 
-    public GameObject[] Bees;
+    public GameObject[] Swarm;
 
     // Use this for initialization
     void Start() {
-        Bees = GameObject.FindGameObjectsWithTag("Bee");
+        Swarm = GameObject.FindGameObjectsWithTag("Bee");
     }
 
     // Update is called once per frame
     void Update() {
-        for (int i = 0; i < Bees.Length; i++) { 
-            if (Bees[i] != null){
-                if (Bees[i].GetComponent<ControlHealth>().getHealth() == 0){
-                    Destroy(Bees[i]);
+        for (int i = 0; i < Swarm.Length; i++) { 
+            if (Swarm[i] != null){
+                if (Swarm[i].GetComponent<ControlHealth>().getHealth() == 0){
+                    Destroy(Swarm[i]);
                 }
             }
         }
-        Bees = GameObject.FindGameObjectsWithTag("Bee");
+        Swarm = GameObject.FindGameObjectsWithTag("Bee");
     }
 
     void Formation() {

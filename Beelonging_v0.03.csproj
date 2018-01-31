@@ -313,6 +313,7 @@
     <Compile Include="Assets\Code\Bees\BeeCollision.cs" />
     <Compile Include="Assets\Code\Bees\BeeManager.cs" />
     <Compile Include="Assets\Code\Bees\ControlHealth.cs" />
+    <Compile Include="Assets\Code\Bees\Find_Move.cs" />
     <Compile Include="Assets\Code\Bees\PlayerBullet.cs" />
     <Compile Include="Assets\Code\Bees\PlayerController.cs" />
     <Compile Include="Assets\Code\Bees\RaycastController.cs" />

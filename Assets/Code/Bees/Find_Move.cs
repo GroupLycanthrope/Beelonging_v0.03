@@ -4,72 +4,73 @@ using UnityEngine;
 
 public class Find_Move : MonoBehaviour {
 
-    public GameObject parent;
-    public bool up,down,right,left;
-    Vector3 pos;
-    public float speed = 0.01f;
+    public GameObject goParent;
+    public bool bUp,bDown,bRight,bLeft;
+    Vector3 v3Pos;
+    public float fSpeed = 0.01f;
+    public float fAcceleration;
 	// Use this for initialization
 	void Start () {
-		
+        fAcceleration = fSpeed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        pos = parent.transform.position;
-        if (left == true) {
-            pos.x -= 0.01f;
+        v3Pos = goParent.transform.position;
+        if (bLeft == true) {
+            v3Pos.x -= fAcceleration;
         }
-        if (right == true)
-        {
-            pos.x += 0.01f;
+        if (bRight == true){
+            v3Pos.x += fAcceleration;
         }
-        if (up == true)
-        {
-            pos.y += 0.01f;
+        if (bUp == true){
+            v3Pos.y += fAcceleration;
         }
-        if (down == true)
-        {
-            pos.y -= 0.01f;
+        if (bDown == true){
+            v3Pos.y -= fAcceleration;
         }
 
 
-        parent.transform.position = pos;
+        goParent.transform.position = v3Pos;
 	}
 
     private void OnTriggerStay2D(Collider2D other){
-        if (other.tag == "Player") {
-            if(parent.transform.position.x < other.transform.position.x) {
-                left = true;
-                right = false;
+        if (other.tag == "LowPrioPlayer") {
+            if(goParent.transform.position.x < other.transform.position.x) {
+                bLeft = true;
+                bRight = false;
             }
-            if (parent.transform.position.y < other.transform.position.y){
-                down = true;
-                up = false;
+            if (goParent.transform.position.y < other.transform.position.y){
+                bDown = true;
+                bUp = false;
             }
-            if (parent.transform.position.x > other.transform.position.x){
-                right = true;
-                left = false;
+            if (goParent.transform.position.x > other.transform.position.x){
+                bRight = true;
+                bLeft = false;
             }
-            if (parent.transform.position.y > other.transform.position.y){
-                up = true;
-                down = false;
-            }
-           
+            if (goParent.transform.position.y > other.transform.position.y){
+                bUp = true;
+                bDown = false;
+            }   
+        }
+        if(other.tag == "Player") {
+            fAcceleration += 0.01f;
         }
     }
     private void OnTriggerExit2D(Collider2D other){
-        if(left == true) {
-            left = false;
+        if(bLeft == true) {
+            bLeft = false;
         }
-        if (down == true){
-            down = false;
+        if (bDown == true){
+            bDown = false;
         }
-        if (right == true){
-            right = false;
+        if (bRight == true){
+            bRight = false;
         }
-        if (up == true){
-            up = false;
+        if (bUp == true){
+            bUp = false;
         }
+        fAcceleration = fSpeed;
     }
 
 }
